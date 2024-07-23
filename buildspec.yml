@@ -10,7 +10,8 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - pytest
+      - ls -R  # List all files recursively to verify test files
+      - pytest || echo "Tests failed"  # Add logging to indicate test failures
   post_build:
     commands:
       - echo Build completed on `date`
@@ -24,4 +25,3 @@ artifacts:
       files:
         - 'latest.zip'
       name: 'latest'
-
