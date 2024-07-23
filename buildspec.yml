@@ -15,8 +15,13 @@ phases:
     commands:
       - echo Build completed on `date`
       - zip -r latest.zip .
-      - aws s3 cp latest.zip s3://my-deploy-bucket/my-flask-app/latest.zip
 
 artifacts:
   files:
     - '**/*'
+  secondary-artifacts:
+    my_flask_app:
+      files:
+        - 'latest.zip'
+      name: 'latest'
+
